@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1,
+        h2 {
+            color: #2c3e50;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        pre {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Fraud Detection Results</h1>
+
+        <h2>Model Performance</h2>
+        <p><strong>Accuracy:</strong> {{ accuracy }}</p>
+        <h3>Confusion Matrix</h3>
+        <img src="{% static confusion_matrix_chart %}" alt="Confusion Matrix">
+
+        <h3>Classification Report</h3>
+        <pre>{{ report }}</pre>
+
+        <h2>Fraudulent Transactions</h2>
+        <div>
+            {{ fraudulent_transactions|safe }}
+        </div>
+
+        <h2>Data Overview</h2>
+        <p><strong>Info:</strong></p>
+        <pre>{{ info }}</pre>
+        <p><strong>Description:</strong></p>
+        <pre>{{ description }}</pre>
+
+        <h2>Charts</h2>
+        <h3>Distribution Chart</h3>
+        <img src="{% static distribution_chart %}" alt="Distribution Chart">
+        <h3>Correlation Chart</h3>
+        <img src="{% static correlation_chart %}" alt="Correlation Chart">
+    </div>
+</body>
+
+</html>
